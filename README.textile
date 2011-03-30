@@ -1,7 +1,6 @@
 h1. What
 
-Script for bootstraping "puppet":pp and it's dependencies
-for a first run on a fresh installed machine.
+Script for bootstraping "puppet":pp and it's dependencies for a first run on a fresh installed machine.
 
 h1. How
 
