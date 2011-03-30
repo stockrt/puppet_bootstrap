@@ -12,8 +12,8 @@ h1. How
 
     # edit
     grep -r '<your_host>' *
-        fabfile.py -> fix "env.roledefs" and uncomment "@roles"
-        puppet/manifests/nodes.pp -> fix "node <your_host>"
+        fabfile.py                  -> fix/uncomment "'web': ['<your_host>']" and uncomment "@roles('web')"
+        puppet/manifests/nodes.pp   -> fix "node <your_host> inherits basenode"
 
     # bootstrap
     fab bootstrap -H <your_host> -p <root_password>

@@ -46,17 +46,27 @@ def help():
     print
     print '# bootstrap'
     print 'fab bootstrap -H <your_host> -p <root_password>'
+    print 'fab bootstrap'
     print
     print '# puppet deploy'
     print 'fab puppet_deploy -H <your_host> -p <root_password>'
+    print 'fab puppet_deploy'
     print 'fab puppet_deploy:force -H <your_host> -p <root_password>'
+    print 'fab puppet_deploy:force'
     print
     print '# puppet sync'
     print 'fab puppet_sync -H <your_host> -p <root_password>'
+    print 'fab puppet_sync'
     print
     print '# puppet deploy and sync at once'
     print 'fab puppet -H <your_host> -p <root_password>'
+    print 'fab puppet'
     print 'fab puppet:force -H <your_host> -p <root_password>'
+    print 'fab puppet:force'
     print
-    print 'You may not specify -H <your_host> to run puppet against the default machines. Just fix "env.roledefs" and uncomment "@roles".'
-    print 'You may also not specify -p <root_password> if you have your ssh pub key configured into root\'s authorized_keys.'
+    print 'You may not specify "-H <your_host>" to run puppet against the default machines. Just fix/uncomment:'
+    print '  fabfile.py                 -> fix/uncomment "\'web\': [\'<your_host>\']" and uncomment "@roles(\'web\')"'
+    print '  puppet/manifests/nodes.pp  -> fix "node <your_host> inherits basenode"'
+    print
+    print 'You may also not specify "-p <root_password>" if you have your ssh pub key configured into root\'s authorized_keys.'
+    print 'This sample already does this, with **my** pub key, so, watch out :)'
