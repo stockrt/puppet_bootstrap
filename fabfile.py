@@ -1,9 +1,9 @@
 from fabric.api import *
 
 env.user = 'root'
-env.roledefs = {
-    'web': ['<your_host>'],
-}
+#env.roledefs = {
+#    'web': ['<your_host>'],
+#}
 
 bootstrap_tempdir = '/tmp/bootstrap'
 fabputdir_tempfile = '/tmp/fabputdir.tar.gz'
@@ -19,24 +19,24 @@ def _put_dir(local_dir, remote_dir, force=False):
 ## end upload dir
 
 ## puppet
-@roles('web')
+#@roles('web')
 def bootstrap():
     _put_dir('bootstrap', bootstrap_tempdir)
     run('chmod 755 %s/bootstrap.sh' % bootstrap_tempdir)
     run('%s/bootstrap.sh' % bootstrap_tempdir)
 
-@roles('web')
+#@roles('web')
 def puppet_deploy(force=''):
     if force == 'force':
         _put_dir('puppet', '/etc/puppet', force=True)
     else:
         _put_dir('puppet', '/etc/puppet')
 
-@roles('web')
+#@roles('web')
 def puppet_sync():
     run('puppet -v --modulepath=/etc/puppet/modules /etc/puppet/manifests/site.pp')
 
-@roles('web')
+#@roles('web')
 def puppet(force=''):
     puppet_deploy(force)
     puppet_sync()
@@ -58,5 +58,5 @@ def help():
     print 'fab puppet -H <your_host> -p <root_password>'
     print 'fab puppet:force -H <your_host> -p <root_password>'
     print
-    print 'You may not specify -H <your_host> to run puppet against the default machines.'
-    print 'Also you may not specify -p <root_password> if you have your ssh pub key configured into root\'s authorized_keys.'
+    print 'You may not specify -H <your_host> to run puppet against the default machines. Just fix "env.roledefs" and uncomment "@roles".'
+    print 'You may also not specify -p <root_password> if you have your ssh pub key configured into root\'s authorized_keys.'

@@ -12,12 +12,17 @@ h1. How
 
     # edit
     grep -r '<your_host>' *
-    and change accordingly
+        fabfile.py -> fix "env.roledefs" and uncomment "@roles"
+        puppet/manifests/nodes.pp -> fix "node <your_host>"
 
     # bootstrap
     fab bootstrap -H <your_host> -p <root_password>
+    or
+    fab bootstrap
 
     # puppet with local manifests (great for VPS without a puppetmaster)
+    fab puppet -H <your_host> -p <root_password>
+    or
     fab puppet
 
     # help
