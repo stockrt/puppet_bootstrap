@@ -70,7 +70,7 @@ h2. Diff of a fixed bootstrap
 h2. Author
 
 Rogério Carvalho Schneider <stockrt@gmail.com>
-"http://stockrt.github.com":[site]
+"http://stockrt.github.com":site
 
 [pp]http://www.puppetlabs.com
 [site]http://stockrt.github.com
