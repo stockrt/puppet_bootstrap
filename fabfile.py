@@ -19,13 +19,15 @@ def _put_dir(local_dir, remote_dir, force=False):
     run('tar -C %s -xzof %s' % (remote_dir, fabputdir_tempfile))
 ## end upload dir
 
-## puppet
+## bootstrap
 #@roles('web')
 def bootstrap():
     _put_dir('bootstrap', bootstrap_tempdir)
     run('chmod 755 %s/bootstrap.sh' % bootstrap_tempdir)
     run('%s/bootstrap.sh' % bootstrap_tempdir)
+## end bootstrap
 
+## puppet
 #@roles('web')
 def puppet_deploy(force=''):
     if force == 'force':
@@ -46,24 +48,24 @@ def puppet(force=''):
 def help():
     print
     print '# bootstrap'
-    print 'fab bootstrap -H <your_host> -p <root_password>'
-    print 'fab bootstrap'
+    print '  fab bootstrap -H <your_host> -p <root_password>'
+    print '  fab bootstrap'
     print
     print '# puppet deploy'
-    print 'fab puppet_deploy -H <your_host> -p <root_password>'
-    print 'fab puppet_deploy'
-    print 'fab puppet_deploy:force -H <your_host> -p <root_password>'
-    print 'fab puppet_deploy:force'
+    print '  fab puppet_deploy -H <your_host> -p <root_password>'
+    print '  fab puppet_deploy'
+    print '  fab puppet_deploy:force -H <your_host> -p <root_password>'
+    print '  fab puppet_deploy:force'
     print
     print '# puppet sync'
-    print 'fab puppet_sync -H <your_host> -p <root_password>'
-    print 'fab puppet_sync'
+    print '  fab puppet_sync -H <your_host> -p <root_password>'
+    print '  fab puppet_sync'
     print
     print '# puppet deploy and sync at once'
-    print 'fab puppet -H <your_host> -p <root_password>'
-    print 'fab puppet'
-    print 'fab puppet:force -H <your_host> -p <root_password>'
-    print 'fab puppet:force'
+    print '  fab puppet -H <your_host> -p <root_password>'
+    print '  fab puppet'
+    print '  fab puppet:force -H <your_host> -p <root_password>'
+    print '  fab puppet:force'
     print
     print 'You may not specify "-H <your_host>" to run puppet against the default machines. Just fix/uncomment:'
     print '  fabfile.py                 -> fix/uncomment "\'web\': [\'<your_host>\']" and uncomment "@roles(\'web\')"'
