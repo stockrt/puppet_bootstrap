@@ -1,5 +1,4 @@
 class utils::install {
-
     package {
         "curl":
             ensure => present;
@@ -10,5 +9,4 @@ class utils::install {
         "bind-utils":
             ensure => present;
     }
-
 }
