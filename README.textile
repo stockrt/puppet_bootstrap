@@ -1,0 +1,35 @@
+h1. What
+
+Script for bootstraping "puppet":pp and it's dependencies
+for a first run on a fresh installed machine.
+
+h1. How
+
+<pre>
+<code>
+    # clone
+    git clone git://github.com/stockrt/puppet_bootstrap.git
+    cd puppet_bootstrap
+
+    # edit
+    grep -r '<your_host>' *
+    and change accordingly
+
+    # bootstrap
+    fab bootstrap -H <your_host> -p <root_password>
+
+    # puppet with local manifests (great for VPS without a puppetmaster)
+    fab puppet
+
+    # help
+    fab help
+</code>
+</pre>
+
+h2. Author
+
+Rogério Carvalho Schneider <stockrt@gmail.com>
+"http://stockrt.github.com":[site]
+
+[pp]http://www.puppetlabs.com
+[site]http://stockrt.github.com
