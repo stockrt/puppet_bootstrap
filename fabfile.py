@@ -1,3 +1,4 @@
+# coding: utf-8
 from fabric.api import *
 
 env.user = 'root'
