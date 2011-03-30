@@ -30,6 +30,43 @@ h1. How
 </code>
 </pre>
 
+h2. Diff of a fixed bootstrap
+
+<pre>
+<code>
+    diff --git a/fabfile.py b/fabfile.py
+    index 4c8c272..a2aa24b 100644
+    --- a/fabfile.py
+    +++ b/fabfile.py
+    @@ -4,3 +4,3 @@ env.user = 'root'
+    -#env.roledefs = {
+    -#    'web': ['<your_host>'],
+    -#}
+    +env.roledefs = {
+    +    'web': ['battlestar'],
+    +}
+    @@ -22 +22 @@ def _put_dir(local_dir, remote_dir, force=False):
+    -#@roles('web')
+    +@roles('web')
+    @@ -28 +28 @@ def bootstrap():
+    -#@roles('web')
+    +@roles('web')
+    @@ -35 +35 @@ def puppet_deploy(force=''):
+    -#@roles('web')
+    +@roles('web')
+    @@ -39 +39 @@ def puppet_sync():
+    -#@roles('web')
+    +@roles('web')
+    diff --git a/puppet/manifests/nodes.pp b/puppet/manifests/nodes.pp
+    index ce7c22d..5cb74c7 100644
+    --- a/puppet/manifests/nodes.pp
+    +++ b/puppet/manifests/nodes.pp
+    @@ -5 +5 @@ node basenode {
+    -node <your_host> inherits basenode {
+    +node battlestar inherits basenode {
+</code>
+</pre>
+
 h2. Author
 
 Rogério Carvalho Schneider <stockrt@gmail.com>
